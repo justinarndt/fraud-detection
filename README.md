@@ -91,20 +91,47 @@ Accounts that behave normally then suddenly exhibit high-value, high-frequency t
 
 > *Results from 300K transaction dataset with 1.5% fraud rate. Actual values may vary by run.*
 
-### Sample Hero Plots
+### Model Comparison Dashboard
 
-After running the analysis, the `outputs/` directory contains 10+ publication-quality visualizations:
+<p align="center">
+  <img src="outputs/model_comparison_dashboard.png" width="800" alt="Model Comparison Dashboard">
+</p>
 
-- **Confusion Matrix** — Annotated heatmap with counts and percentages
-- **PR Curve** — With optimal threshold marker at ≥90% recall
-- **ROC Curve** — With AUC shading
-- **Fraud Ring Network** — Graph visualization of device farm topology
-- **Temporal Heatmap** — Hour × day-of-week fraud rate patterns
-- **Amount Distribution** — Violin plots comparing fraud vs legitimate
-- **Feature Importance** — Side-by-side SHAP vs XGBoost comparison
-- **Latent Space** — PCA projection proving conceptual soundness
-- **Training History** — Loss curves and validation metrics
-- **Model Comparison Dashboard** — 4-panel comprehensive comparison
+### Fraud Ring Detection — Device Farm Topology
+
+<p align="center">
+  <img src="outputs/fraud_ring_network.png" width="700" alt="Fraud Ring Network Graph">
+</p>
+
+### SHAP Explainability — Feature Impact Direction
+
+<p align="center">
+  <img src="outputs/shap_beeswarm.png" width="600" alt="SHAP Beeswarm Plot">
+</p>
+
+<details>
+<summary><strong>All 16 generated visualizations</strong></summary>
+
+| Plot | Description |
+|:---|:---|
+| `confusion_matrix_mlp.png` | MLP confusion matrix heatmap |
+| `confusion_matrix_xgb.png` | XGBoost confusion matrix heatmap |
+| `precision_recall_curve.png` | PR curve with optimal threshold marker |
+| `roc_curve.png` | ROC curve with AUC shading |
+| `fraud_ring_network.png` | Device farm graph topology |
+| `temporal_fraud_heatmap.png` | Hour × day fraud rate patterns |
+| `amount_distribution.png` | Fraud vs legitimate amount violin plots |
+| `training_history.png` | Loss and validation metrics over epochs |
+| `feature_importance_comparison.png` | SHAP vs XGBoost feature ranking |
+| `latent_space_projection.png` | PCA of penultimate layer embeddings |
+| `model_comparison_dashboard.png` | 4-panel comprehensive comparison |
+| `shap_global_importance.png` | Global feature importance bar chart |
+| `shap_beeswarm.png` | Feature impact direction |
+| `shap_waterfall_fraud.png` | Local explanation for a fraud case |
+| `shap_waterfall_legit.png` | Local explanation for a legit case |
+| `shap_force_fraud.png` | Force plot for a fraud case |
+
+</details>
 
 ---
 
@@ -118,7 +145,7 @@ After running the analysis, the `outputs/` directory contains 10+ publication-qu
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/fraud-detection.git
+git clone https://github.com/justinarndt/fraud-detection.git
 cd fraud-detection
 pip install -r requirements.txt
 ```
@@ -157,8 +184,7 @@ fraud-detection/
 │   ├── model.py              # PyTorch MLP + XGBoost
 │   ├── explainability.py     # SHAP (4 plot types)
 │   └── visualization.py      # 10 hero visualizations
-├── outputs/                  # Generated plots (after running)
-└── resume/                   # Application materials
+└── outputs/                  # Generated plots and visualizations
 ```
 
 ---
